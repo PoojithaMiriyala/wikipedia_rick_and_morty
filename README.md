@@ -1,5 +1,5 @@
 # wikipedia_rick_and_morty
-'npx create-react-app .`
+npx create-react-app .
 
 npm install bootstrap
 
