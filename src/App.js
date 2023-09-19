@@ -7,11 +7,11 @@ import Card from "./components/Card/Card";
 import Pagination from "./components/Pagination/Pagination";
 import Filter from "./components/Filter/Filter";
 import Navbar from "./components/Navbar/Navbar";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CardDetails from "./components/Card/CardDetails";
 import Episodes from "./Pages/Episodes";
 import Location from "./Pages/Location";
-import CardDetails from "./components/Card/CardDetails";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
     return (
@@ -44,12 +44,15 @@ const Home = () => {
 
     let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
+    const fetchDataFromApi = async () => {
+        let data = await fetch(api).then((res) => res.json());
+        updateFetchedData(data);
+    }
+
     useEffect(() => {
-        (async function () {
-            let data = await fetch(api).then((res) => res.json());
-            updateFetchedData(data);
-        })();
+        fetchDataFromApi()
     }, [api]);
+
     return (
         <div className="App">
             <h1 className="text-center mb-3">Characters</h1>
@@ -57,7 +60,6 @@ const Home = () => {
             <div className="container">
                 <div className="row">
                     <Filter
-                        pageNumber={pageNumber}
                         status={status}
                         updateStatus={updateStatus}
                         updateGender={updateGender}
