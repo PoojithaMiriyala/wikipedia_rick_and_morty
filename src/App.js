@@ -44,12 +44,12 @@ const Home = () => {
 
     let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
-    const fetchDataFromApi = async () => {
-        let data = await fetch(api).then((res) => res.json());
-        updateFetchedData(data);
-    }
-
+    
     useEffect(() => {
+        const fetchDataFromApi = async () => {
+            let data = await fetch(api).then((res) => res.json());
+            updateFetchedData(data);
+        }
         fetchDataFromApi()
     }, [api]);
 
