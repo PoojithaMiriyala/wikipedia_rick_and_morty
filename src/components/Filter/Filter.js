@@ -4,7 +4,6 @@ import Species from "./category/Species";
 import Status from "./category/Status";
 
 const Filter = ({
-    pageNumber,
     updatePageNumber,
     updateStatus,
     updateGender,
@@ -23,7 +22,7 @@ const Filter = ({
             <div
                 style={{ cursor: "pointer" }}
                 onClick={clear}
-                className="text-light text-decoration-underline text-center mb-3"
+                className="text-secondary text-decoration-underline text-center mb-3"
             >
                 Clear Filters
             </div>
